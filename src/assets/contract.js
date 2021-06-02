@@ -502,7 +502,8 @@ module.exports = {
     chainId: 100,
     txHashLink:
       "https://blockscout.com/xdai/mainnet/tx/<transaction>/token-transfers",
-    addressLink: "https://blockscout.com/poa/xdai/address/<address>/tokens"
+    addressLink:
+      "https://blockscout.com/poa/xdai/mainnet/address/<address>/tokens"
   },
   goerli: {
     address: "0x370bf702275915D5bE43E410beb18d1ca6B54B20",
@@ -525,5 +526,27 @@ module.exports = {
     txHashLink: "https://etherscan.io/tx/<transaction>",
     addressLink: "https://etherscan.io/address/<address>"
   },
-  active: "mainnet"
+  matic: {
+    name: "MATIC Mainnet",
+    currency: "MATIC",
+    address: "0x1C39d4c8AD7Ce5206355D43e343F5136bA5cA50F",
+    rpc: "https://rpc-mainnet.maticvigil.com/",
+    chainId: 137,
+    txHashLink:
+      "https://explorer-mainnet.maticvigil.com/tx/<transaction>/token-transfers",
+    addressLink: "https://explorer-mainnet.maticvigil.com/address/<address>",
+    blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/"
+  },
+  mumbai: {
+    name: "MATIC Mumbai",
+    currency: "MATIC",
+    address: "0x1C39d4c8AD7Ce5206355D43e343F5136bA5cA50F",
+    rpc: "https://rpc-mumbai.maticvigil.com/",
+    chainId: 80001,
+    txHashLink:
+      "https://explorer-mumbai.maticvigil.com/tx/<transaction>/token-transfers",
+    addressLink: "https://explorer-mumbai.maticvigil.com/address/<address>",
+    blockExplorerUrl: "https://explorer-mumbai.maticvigil.com/"
+  },
+  active: "matic"
 };

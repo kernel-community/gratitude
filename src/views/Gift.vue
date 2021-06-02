@@ -55,7 +55,7 @@
                 <p class="font-heading font-bold text-4xl sm:text-5xl">
                   {{ fromApi.name }}
                 </p>
-                <div v-if="network != 'mainnet'" class="text-gray-400">
+                <div v-if="network != 'mainnet'" class="text-xs text-gray-400">
                   <span>
                     network:
                     <span class="font-mono text-xs">
@@ -129,7 +129,15 @@
                         <p>
                           <!-- Please connect to chain id
                         {{ $store.getters.chainId }} & reload -->
-                          Please connect to {{ network }} and reload
+                          <a
+                            class="cursor-pointer"
+                            v-on:click="switchNetwork"
+                            v-if="network == 'matic' || network == 'mumbai'"
+                            >Click here to connect</a
+                          >
+                          <span v-else>Switch</span>
+                          to {{ network }} network. Reload your window after you
+                          have switched.
                         </p>
                       </div>
                     </div>
@@ -406,21 +414,41 @@ export default {
         }
       }
       this.$data.loading = false;
+    },
+    timeout: function timeout(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    },
+    switchNetwork: async function() {
+      console.log("clicked switch :)");
+      let network = {
+        chainId: "0x" + contractNetwork["chainId"].toString(16), // A 0x-prefixed hexadecimal string
+        chainName: contractNetwork["name"],
+        nativeCurrency: {
+          name: contractNetwork["currency"],
+          symbol: contractNetwork["currency"], // 2-6 characters long
+          decimals: 18
+        },
+        rpcUrls: [contractNetwork["rpc"]],
+        blockExplorerUrls: [contractNetwork["blockExplorerUrl"]]
+      };
+      let c = 0;
+      c = await this.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [network]
+      });
+      console.log(c);
+      console.log("waiting 5 seconds...");
+      await this.timeout(3000);
+      if (c == null) {
+        console.log("updating $store with:");
+        console.log("account", this.ethereum.selectedAddress);
+        console.log("network", this.ethereum.networkVersion);
+        await this.$store.commit("change", {
+          account: this.ethereum.selectedAddress,
+          network: this.ethereum.networkVersion
+        });
+      }
     }
-    // generate: async function() {
-    //   console.log("from store:", this.$store.getters.tokenImage);
-    //   console.log("posting");
-    //   const image = this.$store.getters.tokenImage;
-    //   await axios
-    //     .post("http://localhost:3000/gift/upload", {
-    //       image: image,
-    //       hash: this.$route.params.hash,
-    //       token: this.$data.fromApi.token
-    //     })
-    //     .then(response => {
-    //       console.log(response);
-    //     });
-    // }
   }
 };
 </script>

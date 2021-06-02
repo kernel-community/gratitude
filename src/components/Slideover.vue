@@ -149,14 +149,15 @@
                     </div>
                     <div
                       v-if="
-                        !metadata.testimonial && Object.keys(metadata.gratitude).length == 0
+                        !metadata.testimonial &&
+                          Object.keys(metadata.gratitude).length == 0
                       "
                       class="font-fancy text-2xl"
                     >
                       {{ metadata.testimonial }}
                       Each KERNEL Fellow represents a unique spirit - a
                       sprouting seed. For sharing your journey with ours, we are
-                      forever grateful.<br/>
+                      forever grateful.<br />
                       <span class="text-base">~ from the Stewards</span>
                       <center>🌱</center>
                     </div>
