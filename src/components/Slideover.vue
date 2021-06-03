@@ -147,25 +147,16 @@
                         </div>
                       </div>
                     </div>
-                    <div
-                      v-if="
-                        !(
-                          (!this.$data.metadata.gratitude ||
-                            this.$data.metadata.gratitude.count == 0 ||
-                            Object.keys(this.$data.metadata.gratitude).length ==
-                              0) &&
-                          this.$data.metadata.testimonial
-                        )
-                      "
-                      class="font-fancy text-2xl"
-                    >
-                      {{ metadata.testimonial }}
+                    <div v-else class="font-fancy text-2xl">
                       Each KERNEL Fellow represents a unique spirit - a
                       sprouting seed. For sharing your journey with ours, we are
                       forever grateful.<br />
                       <span class="text-base">~ from the Stewards</span>
                       <center>🌱</center>
                     </div>
+                    <!-- <div v-else>
+                      {{ metadata.testimonial }}
+                    </div> -->
                     <!-- <code class="">
                       <pre>{{ JSON.stringify(metadata, null, 2) }} </pre>
                     </code> -->
