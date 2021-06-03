@@ -159,6 +159,7 @@
                       "
                       class="font-fancy text-2xl"
                     >
+                      <br />
                       Each KERNEL Fellow represents a unique spirit - a
                       sprouting seed. For sharing your journey with ours, we are
                       forever grateful.<br />
