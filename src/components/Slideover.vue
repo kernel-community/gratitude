@@ -148,7 +148,7 @@
                       </div>
                     </div>
                     <div
-                      v-if="
+                      v-else-if="
                         !(
                           (this.$data.metadata.gratitude ||
                             this.$data.metadata.gratitude.count == 0 ||
