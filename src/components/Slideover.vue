@@ -150,7 +150,7 @@
                     <div
                       v-if="
                         !(
-                          (!this.$data.metadata.gratitude ||
+                          (this.$data.metadata.gratitude ||
                             this.$data.metadata.gratitude.count == 0 ||
                             Object.keys(this.$data.metadata.gratitude).length ==
                               0) &&
