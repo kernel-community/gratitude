@@ -149,7 +149,13 @@
                     </div>
                     <div
                       v-if="
-                        !metadata.testimonial && metadata.gratitude.count == 0
+                        !(
+                          (!this.$data.metadata.gratitude ||
+                            this.$data.metadata.gratitude.count == 0 ||
+                            Object.keys(this.$data.metadata.gratitude).length ==
+                              0) &&
+                          this.$data.metadata.testimonial
+                        )
                       "
                       class="font-fancy text-2xl"
                     >
