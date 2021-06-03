@@ -147,7 +147,18 @@
                         </div>
                       </div>
                     </div>
-                    <div v-else class="font-fancy text-2xl">
+                    <div
+                      v-if="
+                        !(
+                          (!this.$data.metadata.gratitude ||
+                            this.$data.metadata.gratitude.count == 0 ||
+                            Object.keys(this.$data.metadata.gratitude).length ==
+                              0) &&
+                          this.$data.metadata.testimonial
+                        )
+                      "
+                      class="font-fancy text-2xl"
+                    >
                       Each KERNEL Fellow represents a unique spirit - a
                       sprouting seed. For sharing your journey with ours, we are
                       forever grateful.<br />
