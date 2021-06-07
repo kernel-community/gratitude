@@ -260,7 +260,7 @@ export default {
   },
   metaInfo: {
     // return {
-    // title: `Thank You, ${this.fromApi.name}`,
+    title: "Thank You",
     meta: [
       {
         name: "name",
@@ -275,7 +275,7 @@ export default {
         content:
           "KERNEL Gratitude is a token of appreciation for each fellow in the network, as unique as their contribution. It's a living artifact of a fellow's presence in the community's virtual abode 🏡."
       },
-      { property: "og:title", content: "KERNEL Gift" },
+      { property: "og:title", content: "Thank You" },
       {
         property: "og:site_name",
         content: "KERNEL Gift"
