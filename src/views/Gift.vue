@@ -260,14 +260,22 @@ export default {
   },
   metaInfo() {
     return {
-      title: `, ${this.fromApi.name}`,
+      title: `Thank You, ${this.fromApi.name}`,
       meta: [
+        {
+          name: "name",
+          content: "KERNEL Gift"
+        },
+        {
+          name: "image",
+          content: "https://api.kernel.community/18665492241403950.png"
+        },
         {
           name: "description",
           content:
             "KERNEL Gratitude is a token of appreciation for each fellow in the network, as unique as their contribution. It's a living artifact of a fellow's presence in the community's virtual abode 🏡."
         },
-        { property: "og:title", content: `Thank You, ${this.fromApi.name}` },
+        { property: "og:title", content: "KERNEL Gift" },
         {
           property: "og:site_name",
           content: `Thank You, ${this.fromApi.name}`
@@ -277,14 +285,31 @@ export default {
           content:
             "KERNEL Gratitude is a token of appreciation for each fellow in the network, as unique as their contribution. It's a living artifact of a fellow's presence in the community's virtual abode 🏡."
         },
-        { property: "og:type", content: "page" },
+        { property: "og:type", content: "website" },
         {
           property: "og:url",
           content: "https://gratitude.kernel.community/c/" + this.props.hash
         },
         {
           property: "og:image",
-          content: "https://api.kernel.community/" + this.fromApi.token + ".png"
+          content: "https://api.kernel.community/18665492241403950.png"
+        },
+        {
+          property: "twitter:card",
+          content: "summary_large_image"
+        },
+        {
+          property: "twitter:title",
+          content: `Thank You, ${this.fromApi.name}`
+        },
+        {
+          property: "twitter:description",
+          content:
+            "KERNEL Gratitude is a token of appreciation for each fellow in the network, as unique as their contribution. It's a living artifact of a fellow's presence in the community's virtual abode 🏡."
+        },
+        {
+          property: "twitter:image",
+          content: "https://api.kernel.community/18665492241403950.png"
         }
       ]
     };

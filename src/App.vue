@@ -7,8 +7,7 @@
 <script>
 export default {
   metaInfo: {
-    title: "",
-    titleTemplate: "Thank You%s",
+    title: "KERNEL | Thank You",
     htmlAttrs: {
       lang: "en",
       amp: true
