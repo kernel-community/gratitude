@@ -295,7 +295,7 @@ export default {
         content: "https://api.kernel.community/18665492241403950.png"
       },
       {
-        property: "twitter:card",
+        name: "twitter:card",
         content: "summary_large_image"
       },
       {
