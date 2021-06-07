@@ -299,16 +299,16 @@ export default {
         content: "summary_large_image"
       },
       {
-        property: "twitter:title",
+        name: "twitter:title",
         content: "KERNEL Gift"
       },
       {
-        property: "twitter:description",
+        name: "twitter:description",
         content:
           "KERNEL Gratitude is a token of appreciation for each fellow in the network, as unique as their contribution. It's a living artifact of a fellow's presence in the community's virtual abode 🏡."
       },
       {
-        property: "twitter:image",
+        name: "twitter:image",
         content: "https://api.kernel.community/18665492241403950.png"
       }
     ]
