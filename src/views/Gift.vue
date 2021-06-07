@@ -260,7 +260,7 @@ export default {
   },
   metaInfo: {
     // return {
-    title: `Thank You, ${this.fromApi.name}`,
+    // title: `Thank You, ${this.fromApi.name}`,
     meta: [
       {
         name: "name",
@@ -278,7 +278,7 @@ export default {
       { property: "og:title", content: "KERNEL Gift" },
       {
         property: "og:site_name",
-        content: `Thank You, ${this.fromApi.name}`
+        content: "KERNEL Gift"
       },
       {
         property: "og:description",
@@ -288,7 +288,7 @@ export default {
       { property: "og:type", content: "website" },
       {
         property: "og:url",
-        content: "https://gratitude.kernel.community/c/" + this.props.hash
+        content: "https://gratitude.kernel.community/"
       },
       {
         property: "og:image",
@@ -300,7 +300,7 @@ export default {
       },
       {
         property: "twitter:title",
-        content: `Thank You, ${this.fromApi.name}`
+        content: "KERNEL Gift"
       },
       {
         property: "twitter:description",
