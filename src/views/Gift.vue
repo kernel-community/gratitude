@@ -273,7 +273,7 @@ export default {
       {
         name: "description",
         content:
-          "KERNEL Gratitude is a token of appreciation for each fellow in the network, as unique as their contribution. It's a living artifact of a fellow's presence in the community's virtual abode 🏡."
+          "KERNEL Gratitude is a token of appreciation for each fellow in the network, as unique as their contribution. It's a living artifact of a fellow's presence in the community's virtual abode."
       },
       { property: "og:title", content: "Thank You" },
       {
