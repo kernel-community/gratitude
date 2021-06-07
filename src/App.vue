@@ -4,3 +4,15 @@
     <router-view />
   </div>
 </template>
+<script>
+export default {
+  metaInfo: {
+    title: "",
+    titleTemplate: "Thank You%s",
+    htmlAttrs: {
+      lang: "en",
+      amp: true
+    }
+  }
+};
+</script>

@@ -258,6 +258,37 @@ export default {
       tweetText: ""
     };
   },
+  metaInfo() {
+    return {
+      title: `, ${this.fromApi.name}`,
+      meta: [
+        {
+          name: "description",
+          content:
+            "KERNEL Gratitude is a token of appreciation for each fellow in the network, as unique as their contribution. It's a living artifact of a fellow's presence in the community's virtual abode 🏡."
+        },
+        { property: "og:title", content: `Thank You, ${this.fromApi.name}` },
+        {
+          property: "og:site_name",
+          content: `Thank You, ${this.fromApi.name}`
+        },
+        {
+          property: "og:description",
+          content:
+            "KERNEL Gratitude is a token of appreciation for each fellow in the network, as unique as their contribution. It's a living artifact of a fellow's presence in the community's virtual abode 🏡."
+        },
+        { property: "og:type", content: "page" },
+        {
+          property: "og:url",
+          content: "https://gratitude.kernel.community/c/" + this.props.hash
+        },
+        {
+          property: "og:image",
+          content: "https://api.kernel.community/" + this.fromApi.token + ".png"
+        }
+      ]
+    };
+  },
   beforeCreate: async function() {
     this.$store.commit("change", {
       chainId: contractNetwork.chainId
