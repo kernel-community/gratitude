@@ -4,14 +4,3 @@
     <router-view />
   </div>
 </template>
-<script>
-export default {
-  metaInfo: {
-    title: "KERNEL | Thank You",
-    htmlAttrs: {
-      lang: "en",
-      amp: true
-    }
-  }
-};
-</script>

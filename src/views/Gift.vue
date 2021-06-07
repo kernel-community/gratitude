@@ -258,62 +258,6 @@ export default {
       tweetText: ""
     };
   },
-  metaInfo: {
-    // return {
-    title: "Thank You",
-    meta: [
-      {
-        name: "name",
-        content: "KERNEL Gift"
-      },
-      {
-        name: "image",
-        content: "https://api.kernel.community/18665492241403950.png"
-      },
-      {
-        name: "description",
-        content:
-          "KERNEL Gratitude is a token of appreciation for each fellow in the network, as unique as their contribution. It's a living artifact of a fellow's presence in the community's virtual abode."
-      },
-      { property: "og:title", content: "Thank You" },
-      {
-        property: "og:site_name",
-        content: "KERNEL Gift"
-      },
-      {
-        property: "og:description",
-        content:
-          "KERNEL Gratitude is a token of appreciation for each fellow in the network, as unique as their contribution. It's a living artifact of a fellow's presence in the community's virtual abode 🏡."
-      },
-      { property: "og:type", content: "website" },
-      {
-        property: "og:url",
-        content: "https://gratitude.kernel.community/"
-      },
-      {
-        property: "og:image",
-        content: "https://api.kernel.community/18665492241403950.png"
-      },
-      {
-        name: "twitter:card",
-        content: "summary_large_image"
-      },
-      {
-        name: "twitter:title",
-        content: "KERNEL Gift"
-      },
-      {
-        name: "twitter:description",
-        content:
-          "KERNEL Gratitude is a token of appreciation for each fellow in the network, as unique as their contribution. It's a living artifact of a fellow's presence in the community's virtual abode 🏡."
-      },
-      {
-        name: "twitter:image",
-        content: "https://api.kernel.community/18665492241403950.png"
-      }
-    ]
-    // };
-  },
   beforeCreate: async function() {
     this.$store.commit("change", {
       chainId: contractNetwork.chainId
