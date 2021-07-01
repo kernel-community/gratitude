@@ -7,7 +7,7 @@
     </p>
     <p v-if="transactionHash" class="mt-2">
       <span class="font-mono">
-        <a :href="linkToTxHash" target="_new" >
+        <a :href="linkToTxHash" target="_new">
           {{ transactionHash.substring(0, 10) + "..." }}
           <font-awesome-icon :icon="['fas', 'external-link-alt']" />
         </a>
