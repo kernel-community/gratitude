@@ -109,18 +109,30 @@
                   class="text-lg font-medium text-gray-900"
                   id="slide-over-title"
                 >
-                  Token Details
+                  Your Token Metadata
                 </h2>
-                <span>
-                  View&nbsp;
-                  <a
-                    class="font-mono text-xs border-dashed border-b-1 border-gray-600 cursor-pointer"
-                    :href="contractAddressLink"
-                    target="_new"
-                  >
-                    contract</a
-                  >.
-                </span>
+                <div class="text-xs text-gray-400">
+                  <span>
+                    network:
+                    <span class="font-mono text-xs">
+                      {{ network + "," }}
+                    </span>
+                    <span>token id:</span>
+                    <span class="font-mono text-xs">
+                      {{ metadata.tokenId + "," }}
+                    </span>
+                  </span>
+                  <span>
+                    View&nbsp;
+                    <a
+                      class="font-mono text-xs border-dashed border-b-1 border-gray-600 cursor-pointer"
+                      :href="contractAddressLink"
+                      target="_new"
+                    >
+                      contract</a
+                    >.
+                  </span>
+                </div>
               </div>
               <div class="mt-6 relative flex-1 px-4 sm:px-6">
                 <!-- Replace with your content -->
@@ -199,7 +211,8 @@ export default {
         "<address>",
         contractNetwork.address
       ),
-      metadataLink: ""
+      metadataLink: "",
+      network: contractAssets.active
     };
   },
   watch: {
@@ -215,6 +228,7 @@ export default {
       this.$data.metadata = r.data;
       this.$data.metadataLink =
         apiUrl + "/gift/raw/" + this.$store.getters.token;
+      // console.log(r.data);
     }
   },
   methods: {

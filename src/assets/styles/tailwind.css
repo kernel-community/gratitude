@@ -2,13 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .kernel-btn {
+    @apply bg-purple-500 hover:bg-purple-900 text-white py-2 px-4 rounded-md shadow-2xl font-kernel;
+  }
+}
+
 a {
   border-bottom: 2px dashed #8C65F7;
 }
+
 .tweet-link a {
   border-bottom: none;
 }
-.page-footer a {
+.card-footer a {
   border-bottom: 1px solid #ac90fa;
 }
 .spinner {

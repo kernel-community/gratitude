@@ -1,123 +1,43 @@
 <template>
   <div>
     <div
-      class="min-h-screen min-w-screen py-6 flex flex-col justify-center sm:py-12"
+      class="bg-gradient-to-r from-purple-400 to-blue-500 min-h-screen min-w-screen py-6 flex flex-col justify-center sm:py-12"
     >
       <div class="relative py-3 sm:max-w-xl sm:mx-auto">
         <div
-          class="absolute inset-0 bg-gradient-to-r from-purple-500 to-purple-900 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
+          class="sm:absolute sm:inset-0 sm:bg-gradient-to-r sm:from-purple-500 sm:to-purple-900 sm:shadow-lg sm:transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
         ></div>
         <div
           class="relative px-1 py-10 bg-gray-50 shadow-lg sm:rounded-3xl sm:p-20"
         >
-          <div
-            class="invisible sm:visible absolute sm:bottom-0 sm:left-0 sm:p-5 font-fancy text-gray-400 text-lg"
-            v-if="!fielding.loading"
-          >
-            fancy a
-            <span class="tweet-link">
-              <a :href="tweetText" target="_new" class="text-blue-500"
-                >tweet <font-awesome-icon :icon="['fab', 'twitter']"
-              /></a>
-              ?
-            </span>
-          </div>
-          <div
-            class="invisible sm:visible sm:absolute sm:bottom-0 sm:bottom-0 sm:right-0 sm:p-5"
-            v-if="!fielding.loading"
-          >
-            <span class="mr-1 font-fancy">
-              <span
-                class="border-solid border-b-2 border-gray-600 cursor-pointer"
-                @click="$store.commit('togglePanel', true)"
-              >
-                View Testimonials
-              </span>
-            </span>
-          </div>
-          <div class="absolute bottom-0 p-3 sm:invisible">
-            <span class="tweet-link">
-              <a :href="tweetText" target="_new" class="text-blue-500"
-                >Tweet <font-awesome-icon :icon="['fab', 'twitter']"
-              /></a>
-            </span>
-            |
-            <span
-              class="border-solid border-b-2 border-gray-600 cursor-pointer"
-              @click="$store.commit('togglePanel', true)"
-            >
-              View Testimonials
-            </span>
-          </div>
           <div class="max-w-md mx-auto">
             <div v-if="!fielding.loading">
               <div v-if="fielding.ok">
-                <p class="font-heading font-bold text-4xl sm:text-5xl">
-                  {{ fromApi.name }}
-                </p>
-                <div v-if="network != 'mainnet'" class="text-xs text-gray-400">
-                  <span>
-                    network:
-                    <span class="font-mono text-xs">
-                      {{ network }}
-                    </span>
-                  </span>
-                </div>
-                <div class="text-gray-400 text-xs">
-                  token id:
-                  {{ fromApi.token }}
-                </div>
-                <!-- <p class="font-heading text-5xl">
-              Hello!
-            </p> -->
-                <!-- <p class="truncate font-mono text-xs">
-              {{ hash }}
-            </p> -->
-                <!-- <p>loading: {{ fielding.loading }}</p> -->
-                <div>
-                  <!-- <p>claim: {{ fromApi.claim_status }}</p> -->
-                  <!-- <p>proof: {{ fromApi.proof }}</p> -->
-                  <p
-                    v-if="Object.keys(fromApi.award).length > 0"
-                    class="font-award text-4xl mt-5"
-                  >
-                    {{ fromApi.award }}
-                  </p>
-                  <!-- <p v-if="fromApi.gratitude">gratitude: {{ fromApi.gratitude }}</p> -->
-                  <!-- <p>image: {{ fromApi.image }}</p> -->
-                  <!-- insert image here -->
-                  <!-- <div id="canvas"></div> -->
-                  <div class="my-5">
-                    <Canvas
-                      :fellowName="fromApi.name"
-                      class="h-96 w-96 shadow-2xl"
-                    />
-                  </div>
-                </div>
-                <div v-if="!loading">
+                <Header
+                  :name="fromApi.name"
+                  :award="fromApi.award"
+                  :tweetText="tweetText"
+                />
+                <Canvas
+                  :fellowName="fromApi.name"
+                  class="h-56 w-56 sm:h-96 sm:w-96 shadow-2xl sm:m-5 mx-auto my-5"
+                />
+                <div
+                  v-if="!loading && !fielding.msg.txHash && !fielding.msg.alert"
+                  class="sm:m-5 mx-5 grid justify-items-center"
+                >
                   <!-- if claim status = false / not already minted -->
                   <div v-if="!$store.getters.claim_status">
                     <!-- display if metamask is not connected -->
                     <div v-if="!$store.getters.account">
-                      <button
-                        class="bg-purple-500 hover:bg-purple-900 text-white font-bold py-3 px-4 rounded-lg shadow-2xl font-kernel"
-                        v-on:click="connectMetamask"
-                      >
+                      <button class="kernel-btn" v-on:click="connectMetamask">
                         Connect Metamask
                       </button>
                     </div>
                     <!-- display if metamask is connected -->
                     <div v-else>
-                      <!-- display if the metamask is connected to the correct network -->
-                      <!-- <button
-                        class="bg-purple-500 hover:bg-purple-900 text-white font-bold py-3 px-4 mr-2 rounded-lg shadow-2xl font-kernel"
-                        v-on:click="generate"
-                        v-if="$store.getters.network == $store.getters.chainId"
-                      >
-                        Generate NFT
-                      </button> -->
                       <button
-                        class="bg-purple-500 hover:bg-purple-900 text-white font-bold mb-4 py-3 px-4 rounded-lg shadow-2xl font-kernel"
+                        class="kernel-btn"
                         v-on:click="claim"
                         v-if="$store.getters.network == $store.getters.chainId"
                       >
@@ -126,9 +46,9 @@
 
                       <!-- display if the metamask is not connected to the correct network -->
                       <div v-else>
-                        <p>
-                          <!-- Please connect to chain id
-                        {{ $store.getters.chainId }} & reload -->
+                        <p
+                          class="animate-pulse text-sm bg-gradient-to-r from-blue-50 via-blue-100 to-blue-50 py-5 px-5 shadow-md rounded-xl m-5 ring-4 ring-blue-100 font-lato font-light"
+                        >
                           <a
                             class="cursor-pointer"
                             v-on:click="switchNetwork"
@@ -136,74 +56,61 @@
                             >Click here to connect</a
                           >
                           <span v-else>Switch</span>
-                          to {{ network }} network. Reload your window after you
-                          have switched.
+                          to
+                          <span class="font-semibold">{{ network }}</span>
+                          network and reload your window.
                         </p>
                       </div>
                     </div>
                   </div>
                   <!-- if already minted -->
-                  <div v-else>
+                  <div v-else class="items-start">
                     <p class="truncate">
-                      The token is minted to:
+                      This token is minted to:
                       <span class="font-mono truncate">
                         <a :href="linkTo.tokens" target="_new">
-                          {{ $store.getters.currentOwner }}
+                          {{
+                            $store.getters.currentOwner.substring(0, 8) + ".."
+                          }}
                         </a>
                       </span>
                     </p>
                   </div>
                 </div>
-                <div v-else>
-                  <div class="spinner"></div>
+                <Spinner v-else-if="loading == true" />
+
+                <!-- minting tx sent info text -->
+                <PulsingInfoText
+                  v-if="fielding.msg.txHash && !loading"
+                  text="Minting transaction sent"
+                  :transactionHash="fielding.msg.txHash"
+                  :linkToTxHash="linkTo.txHash"
+                />
+                <!-- alert info text -->
+                <PulsingInfoText
+                  v-if="fielding.msg.alert && !loading"
+                  :text="fielding.msg.alert"
+                />
+
+                <!-- stuff in the bottom of the card -->
+                <div class="p-5 sm:p-0 grid justify-items-start">
+                  <!-- view testimonials button -->
+                  <ViewTestimonialsButton />
+                  <!-- footer -->
+                  <Footer />
                 </div>
               </div>
 
+              <!-- incorrect hash supplied -->
               <div v-else>
-                <p class="py-3 text-2xl">{{ fielding.notAuthMsg }}</p>
-              </div>
-
-              <div v-if="fielding.msg.txHash" class="pt-4">
-                <p>
-                  Minting transaction sent
-                </p>
-                <p class="truncate">
-                  Transaction hash:
-                  <span class="font-mono truncate">
-                    <a :href="linkTo.txHash" target="_new">
-                      {{ fielding.msg.txHash }}
-                    </a>
-                  </span>
-                </p>
-              </div>
-              <div v-if="fielding.msg.alert" class="pt-4">
-                <p>
-                  {{ fielding.msg.alert }}
+                <p class="sm:py-3 text-3xl p-3 text-center">
+                  {{ fielding.notAuthMsg }}
                 </p>
               </div>
             </div>
-            <div v-else>
-              <div class="spinner"></div>
-            </div>
+            <!-- full page loading -->
+            <Spinner v-else />
           </div>
-        </div>
-      </div>
-      <div class="static page-footer bottom-0 left-0">
-        <div
-          class="absolute md:bottom-0 md:left-0 p-5 mt-6 font-sans text-gray-400 text-sm"
-        >
-          <span>
-            Design & code by
-          </span>
-          <a href="https://www.twitter.com/angelagilhotra/" target="_new">
-            @angelagilhotra
-          </a>
-          <span>
-            , special thanks to
-          </span>
-          <a href="https://www.instagram.com/malayvasa/" target="_new">
-            @malayvasa
-          </a>
         </div>
       </div>
     </div>
@@ -211,7 +118,13 @@
 </template>
 
 <script>
-import Canvas from "@/components/Canvas";
+import Canvas from "../components/sections/Canvas";
+import Header from "../components/sections/Header";
+import Spinner from "../components/Spinner.vue";
+import Footer from "../components/sections/Footer.vue";
+import ViewTestimonialsButton from "../components/ViewTestimonialsButton.vue";
+import PulsingInfoText from "../components/PulsingInfoText.vue";
+
 const axios = require("axios");
 const Web3 = require("web3");
 const contractAssets = require("../assets/contract");
@@ -230,7 +143,12 @@ export default {
     hash: String
   },
   components: {
-    Canvas
+    Canvas,
+    Header,
+    Spinner,
+    Footer,
+    ViewTestimonialsButton,
+    PulsingInfoText
   },
   data: () => {
     return {

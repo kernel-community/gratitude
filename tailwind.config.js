@@ -16,7 +16,8 @@ module.exports = {
       cyan: colors.cyan,
       white: colors.white,
       purple: colors.violet,
-      green: colors.emerald
+      green: colors.emerald,
+      yellow: colors.amber
     },
     fontFamily: {
       sans: ["'Libre Franklin'", "sans-serif"],
@@ -35,7 +36,8 @@ module.exports = {
         heading: ['"Playfair Display"'],
         kernel: ['"Miriam Libre"'],
         fancy: ['"Lora"'],
-        award: ["Niconne"]
+        award: ["Niconne"],
+        lato: ["Lato"]
       }
     }
   },
